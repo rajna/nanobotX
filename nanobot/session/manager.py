@@ -93,7 +93,7 @@ class SessionManager:
         safe_key = safe_filename(key.replace(":", "_"))
         return self.legacy_sessions_dir / f"{safe_key}.jsonl"
 
-    def get_or_create(self, key: str) -> Session:
+    def get_or_create(self, key: str) -> tuple[Session, bool]:
         """
         Get an existing session or create a new one.
 
@@ -101,17 +101,19 @@ class SessionManager:
             key: Session key (usually channel:chat_id).
 
         Returns:
-            The session.
+            A tuple of (session, is_new) where is_new is True if the session was just created.
         """
         if key in self._cache:
-            return self._cache[key]
+            return self._cache[key], False
 
         session = self._load(key)
+        is_new = False
         if session is None:
             session = Session(key=key)
+            is_new = True
 
         self._cache[key] = session
-        return session
+        return session, is_new
 
     def _load(self, key: str) -> Session | None:
         """Load a session from disk."""

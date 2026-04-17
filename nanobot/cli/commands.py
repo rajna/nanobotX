@@ -340,6 +340,7 @@ def gateway(
         session_manager=session_manager,
         mcp_servers=config.tools.mcp_servers,
         channels_config=config.channels,
+        hooks_config=config.get_hooks_config(),  # 新增这行
     )
 
     # Set cron callback (needs agent)
@@ -498,7 +499,7 @@ def agent(
     bus = MessageBus()
     provider = _make_provider(config)
 
-    # Create cron service for tool usage (no callback needed for CLI unless running)
+    # Create cron service for tool usage
     cron_store_path = get_cron_dir() / "jobs.json"
     cron = CronService(cron_store_path)
 
@@ -524,6 +525,7 @@ def agent(
         restrict_to_workspace=config.tools.restrict_to_workspace,
         mcp_servers=config.tools.mcp_servers,
         channels_config=config.channels,
+        hooks_config=config.get_hooks_config(),  # 新增这行
     )
 
     # Show spinner when logs are off (no output to miss); skip when logs are on
@@ -578,8 +580,43 @@ def agent(
         if hasattr(signal, 'SIGPIPE'):
             signal.signal(signal.SIGPIPE, signal.SIG_IGN)
 
+        # Set up cron callback for CLI mode
+        from nanobot.cron.types import CronJob
+        from nanobot.agent.tools.cron import CronTool
+
+        async def on_cron_job(job: CronJob) -> str | None:
+            """Execute a cron job through the agent in CLI mode."""
+            reminder_note = (
+                "[Scheduled Task] Timer finished.\n\n"
+                f"Task '{job.name}' has been triggered.\n"
+                f"Scheduled instruction: {job.payload.message}"
+            )
+            cron_tool = agent_loop.tools.get("cron")
+            cron_token = None
+            if isinstance(cron_tool, CronTool):
+                cron_token = cron_tool.set_cron_context(True)
+            try:
+                response = await agent_loop.process_direct(
+                    reminder_note,
+                    session_key=f"cron:{job.id}",
+                    channel=job.payload.channel or "cli",
+                    chat_id=job.payload.to or "direct",
+                )
+            finally:
+                if isinstance(cron_tool, CronTool) and cron_token is not None:
+                    cron_tool.reset_cron_context(cron_token)
+
+            # In CLI mode, print the response directly
+            if response:
+                console.print()
+                _print_agent_response(response, render_markdown=markdown)
+            return response
+
+        cron.on_job = on_cron_job
+
         async def run_interactive():
             bus_task = asyncio.create_task(agent_loop.run())
+            cron_task = asyncio.create_task(cron.start())
             turn_done = asyncio.Event()
             turn_done.set()
             turn_response: list[str] = []
@@ -649,9 +686,11 @@ def agent(
                         console.print("\nGoodbye!")
                         break
             finally:
+                cron.stop()
                 agent_loop.stop()
                 outbound_task.cancel()
-                await asyncio.gather(bus_task, outbound_task, return_exceptions=True)
+                cron_task.cancel()
+                await asyncio.gather(bus_task, outbound_task, cron_task, return_exceptions=True)
                 await agent_loop.close_mcp()
 
         asyncio.run(run_interactive())

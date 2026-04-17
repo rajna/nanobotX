@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+
 import re
 import weakref
 from contextlib import AsyncExitStack
@@ -22,10 +23,12 @@ from nanobot.agent.tools.registry import ToolRegistry
 from nanobot.agent.tools.shell import ExecTool
 from nanobot.agent.tools.spawn import SpawnTool
 from nanobot.agent.tools.web import WebFetchTool, WebSearchTool
+from nanobot.agent.hooks import HookEvent, HookManager, create_hook_manager
 from nanobot.bus.events import InboundMessage, OutboundMessage
 from nanobot.bus.queue import MessageBus
 from nanobot.providers.base import LLMProvider
 from nanobot.session.manager import Session, SessionManager
+
 
 if TYPE_CHECKING:
     from nanobot.config.schema import ChannelsConfig, ExecToolConfig
@@ -65,6 +68,7 @@ class AgentLoop:
         session_manager: SessionManager | None = None,
         mcp_servers: dict | None = None,
         channels_config: ChannelsConfig | None = None,
+        hooks_config: dict[str, Any] | None = None,  # 添加这行
     ):
         from nanobot.config.schema import ExecToolConfig
         self.bus = bus
@@ -110,6 +114,15 @@ class AgentLoop:
         self._consolidation_locks: weakref.WeakValueDictionary[str, asyncio.Lock] = weakref.WeakValueDictionary()
         self._active_tasks: dict[str, list[asyncio.Task]] = {}  # session_key -> tasks
         self._processing_lock = asyncio.Lock()
+        
+        # Initialize Hook manager
+        skills_dir = Path(__file__).parent.parent / "skills"
+        self.hooks = create_hook_manager(skills_dir=skills_dir, config=hooks_config)
+
+
+        if self.hooks.is_enabled():
+            hook_count = sum(len(h) for h in self.hooks._hooks.values())
+            logger.info("Hook system enabled with {} hooks", hook_count)
         self._register_default_tools()
 
     def _register_default_tools(self) -> None:
@@ -180,16 +193,36 @@ class AgentLoop:
     async def _run_agent_loop(
         self,
         initial_messages: list[dict],
+        session: Session | None = None,  # 添加这个参数
         on_progress: Callable[..., Awaitable[None]] | None = None,
+        hook_context: dict[str, Any] | None = None,  # 添加这个参数，用于传递 hook 上下文
     ) -> tuple[str | None, list[str], list[dict]]:
         """Run the agent iteration loop. Returns (final_content, tools_used, messages)."""
         messages = initial_messages
         iteration = 0
         final_content = None
         tools_used: list[str] = []
+        hook_context = hook_context or {}  # 初始化 hook 上下文
 
         while iteration < self.max_iterations:
             iteration += 1
+
+            tool_defs = self.tools.get_definitions()
+
+            # ============= 新增: LLM 调用前触发 Hook =============
+            hook_context.update({
+                "messages": messages,
+                "tools": tool_defs,
+                "model": self.model,
+                "session": session,
+                "provider": self.provider,
+                "iteration": iteration,
+            })
+            hook_context = await self.hooks.trigger_async(
+                HookEvent.BEFORE_LLM_CALL, hook_context
+            )
+            messages = hook_context.get("messages", messages)
+            # ====================================================
 
             response = await self.provider.chat(
                 messages=messages,
@@ -199,6 +232,21 @@ class AgentLoop:
                 max_tokens=self.max_tokens,
                 reasoning_effort=self.reasoning_effort,
             )
+
+            # ============= 新增: LLM 调用后触发 Hook =============
+            hook_context.update({
+                "messages": messages,
+                "response": response,
+                "model": self.model,
+                "session": session,
+                "provider": self.provider,
+                "iteration": iteration,
+            })
+            hook_context = await self.hooks.trigger_async(
+                HookEvent.AFTER_LLM_CALL, hook_context
+            )
+            response = hook_context.get("response", response)
+            # ====================================================
 
             if response.has_tool_calls:
                 if on_progress:
@@ -228,10 +276,43 @@ class AgentLoop:
                     tools_used.append(tool_call.name)
                     args_str = json.dumps(tool_call.arguments, ensure_ascii=False)
                     logger.info("Tool call: {}({})", tool_call.name, args_str[:200])
+                    # ============= 新增: 工具调用前触发 Hook =============
+                    hook_context.update({
+                        "tool_name": tool_call.name,
+                        "tool_args": tool_call.arguments,
+                        "tool_call_id": tool_call.id,
+                        "messages": messages,
+                        "session": session,
+                    })
+                    hook_context = await self.hooks.trigger_async(
+                        HookEvent.BEFORE_TOOL_CALL, hook_context
+                    )
+                    tool_call.name = hook_context.get("tool_name", tool_call.name)
+                    tool_call.arguments = hook_context.get("tool_args", tool_call.arguments)
+                    # ====================================================
+                    import time
+                    start_time = time.time()
                     result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                    duration = int((time.time() - start_time) * 1000)  # 转换为毫秒
+                    # ============= 新增: 工具调用后触发 Hook =============
+                    hook_context.update({
+                        "tool_name": tool_call.name,
+                        "tool_args": tool_call.arguments,
+                        "tool_result": result,
+                        "tool_call_id": tool_call.id,
+                        "messages": messages,
+                        "session": session,
+                        "duration": duration,  # 添加执行时长
+                    })
+                    hook_context = await self.hooks.trigger_async(
+                        HookEvent.AFTER_TOOL_CALL, hook_context
+                    )
+                    result = hook_context.get("tool_result", result)
+                    # ====================================================
                     messages = self.context.add_tool_result(
                         messages, tool_call.id, tool_call.name, result
                     )
+                    
             else:
                 clean = self._strip_think(response.content)
                 # Don't persist error responses to session history — they can
@@ -294,10 +375,22 @@ class AgentLoop:
     async def _dispatch(self, msg: InboundMessage) -> None:
         """Process a message under the global lock."""
         async with self._processing_lock:
+            session = None
             try:
+                # 获取 session 用于 hook
+                session, _ = self.sessions.get_or_create(msg.session_key)
                 response = await self._process_message(msg)
                 if response is not None:
                     await self.bus.publish_outbound(response)
+                    # ============= 新增: 响应发送后触发 Hook =============
+                    await self.hooks.trigger_async(
+                        HookEvent.ON_RESPONSE, {
+                            "response": response,
+                            "message": msg,
+                            "session": session,
+                        }
+                    )
+                    # ====================================================
                 elif msg.channel == "cli":
                     await self.bus.publish_outbound(OutboundMessage(
                         channel=msg.channel, chat_id=msg.chat_id,
@@ -340,14 +433,45 @@ class AgentLoop:
                                 else ("cli", msg.chat_id))
             logger.info("Processing system message from {}", msg.sender_id)
             key = f"{channel}:{chat_id}"
-            session = self.sessions.get_or_create(key)
+            session, is_new = self.sessions.get_or_create(key)
+            if is_new:
+                # Trigger ON_SESSION_START for new sessions
+                await self.hooks.trigger_async(HookEvent.ON_SESSION_START, {"session": session, "key": key})
             self._set_tool_context(channel, chat_id, msg.metadata.get("message_id"))
             history = session.get_history(max_messages=self.memory_window)
+            # ============= 新增: 构建上下文前触发 Hook =============
+            hook_context = {
+                "history": history,
+                "current_message": msg.content,
+                "session": session,
+                "provider": self.provider,  # 添加 provider
+                "model": self.model,  # 添加 model
+            }
+            hook_context = await self.hooks.trigger_async(
+                HookEvent.BEFORE_CONTEXT_BUILD, hook_context
+            )
+            history = hook_context.get("history", history)
+            msg.content = hook_context.get("current_message", msg.content)
+            # ====================================================
+
             messages = self.context.build_messages(
                 history=history,
                 current_message=msg.content, channel=channel, chat_id=chat_id,
             )
-            final_content, _, all_msgs = await self._run_agent_loop(messages)
+
+            # ============= 新增: 构建上下文后触发 Hook =============
+            # 保留 before_context_build hook 的 context
+            hook_context.update({
+                "messages": messages,
+                "session": session,
+            })
+            hook_context = await self.hooks.trigger_async(
+                HookEvent.AFTER_CONTEXT_BUILD, hook_context
+            )
+            messages = hook_context.get("messages", messages)
+            # ====================================================
+
+            final_content, _, all_msgs = await self._run_agent_loop(messages, hook_context=hook_context)
             self._save_turn(session, all_msgs, 1 + len(history))
             self.sessions.save(session)
             return OutboundMessage(channel=channel, chat_id=chat_id,
@@ -357,7 +481,10 @@ class AgentLoop:
         logger.info("Processing message from {}:{}: {}", msg.channel, msg.sender_id, preview)
 
         key = session_key or msg.session_key
-        session = self.sessions.get_or_create(key)
+        session, is_new = self.sessions.get_or_create(key)
+        if is_new:
+            # Trigger ON_SESSION_START for new sessions
+            await self.hooks.trigger_async(HookEvent.ON_SESSION_START, {"session": session, "key": key})
 
         # Slash commands
         cmd = msg.content.strip().lower()
@@ -394,6 +521,11 @@ class AgentLoop:
                                   content="🐈 nanobot commands:\n/new — Start a new conversation\n/stop — Stop the current task\n/help — Show available commands")
 
         unconsolidated = len(session.messages) - session.last_consolidated
+        # Guard against negative unconsolidated (data inconsistency bug fix)
+        if unconsolidated < 0:
+            logger.warning("Session {} has negative unconsolidated count ({}), resetting last_consolidated", session.key, unconsolidated)
+            session.last_consolidated = len(session.messages)
+            unconsolidated = 0
         if (unconsolidated >= self.memory_window and session.key not in self._consolidating):
             self._consolidating.add(session.key)
             lock = self._consolidation_locks.setdefault(session.key, asyncio.Lock())
@@ -417,12 +549,39 @@ class AgentLoop:
                 message_tool.start_turn()
 
         history = session.get_history(max_messages=self.memory_window)
+        # ============= 新增: 构建上下文前触发 Hook =============
+        hook_context = {
+            "history": history,
+            "current_message": msg.content,
+            "session": session,
+            "provider": self.provider,  # 添加 provider
+            "model": self.model,  # 添加 model
+        }
+        hook_context = await self.hooks.trigger_async(
+            HookEvent.BEFORE_CONTEXT_BUILD, hook_context
+        )
+        history = hook_context.get("history", history)
+        msg.content = hook_context.get("current_message", msg.content)
+        # ====================================================
+
         initial_messages = self.context.build_messages(
             history=history,
             current_message=msg.content,
             media=msg.media if msg.media else None,
             channel=msg.channel, chat_id=msg.chat_id,
         )
+
+        # ============= 新增: 构建上下文后触发 Hook =============
+        # 保留 before_context_build hook 的 context
+        hook_context.update({
+            "messages": initial_messages,
+            "session": session,
+        })
+        hook_context = await self.hooks.trigger_async(
+            HookEvent.AFTER_CONTEXT_BUILD, hook_context
+        )
+        initial_messages = hook_context.get("messages", initial_messages)
+        # ====================================================
 
         async def _bus_progress(content: str, *, tool_hint: bool = False) -> None:
             meta = dict(msg.metadata or {})
@@ -433,7 +592,8 @@ class AgentLoop:
             ))
 
         final_content, _, all_msgs = await self._run_agent_loop(
-            initial_messages, on_progress=on_progress or _bus_progress,
+            initial_messages, session=session, on_progress=on_progress or _bus_progress,
+            hook_context=hook_context,  # 传递 hook 上下文
         )
 
         if final_content is None:
@@ -443,6 +603,18 @@ class AgentLoop:
         self.sessions.save(session)
 
         if (mt := self.tools.get("message")) and isinstance(mt, MessageTool) and mt._sent_in_turn:
+            # message tool was used to send directly; still trigger ON_RESPONSE hook
+            # so that digital-avatar TTS and expression updates work correctly.
+            await self.hooks.trigger_async(
+                HookEvent.ON_RESPONSE, {
+                    "response": OutboundMessage(
+                        channel=msg.channel, chat_id=msg.chat_id, content=final_content,
+                        metadata=msg.metadata or {},
+                    ),
+                    "message": msg,
+                    "session": session,
+                }
+            )
             return None
 
         preview = final_content[:120] + "..." if len(final_content) > 120 else final_content

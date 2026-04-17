@@ -14,6 +14,7 @@ class Base(BaseModel):
     model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
 
 
+
 class WhatsAppConfig(Base):
     """WhatsApp channel configuration."""
 
@@ -328,6 +329,12 @@ class ToolsConfig(Base):
     restrict_to_workspace: bool = False  # If true, restrict all tool access to workspace directory
     mcp_servers: dict[str, MCPServerConfig] = Field(default_factory=dict)
 
+class HooksConfig(Base):
+    """Hook system configuration."""
+    enabled: bool = True
+    disabled_hooks: list[str] = Field(default_factory=list)
+    hook_options: dict = Field(default_factory=dict)  # 简化为 dict
+
 
 class Config(BaseSettings):
     """Root configuration for nanobot."""
@@ -337,6 +344,7 @@ class Config(BaseSettings):
     providers: ProvidersConfig = Field(default_factory=ProvidersConfig)
     gateway: GatewayConfig = Field(default_factory=GatewayConfig)
     tools: ToolsConfig = Field(default_factory=ToolsConfig)
+    hooks: HooksConfig = Field(default_factory=HooksConfig) 
 
     @property
     def workspace_path(self) -> Path:
@@ -417,5 +425,15 @@ class Config(BaseSettings):
             if spec and spec.is_gateway and spec.default_api_base:
                 return spec.default_api_base
         return None
+
+    def get_hooks_config(self) -> dict:  # 简化为 dict
+        """Get hook configuration as dict for HookManager."""
+        return {
+            "enabled": self.hooks.enabled,
+            "disabled_hooks": self.hooks.disabled_hooks,
+            "hook_options": self.hooks.hook_options,
+        }
+
+
 
     model_config = ConfigDict(env_prefix="NANOBOT_", env_nested_delimiter="__")

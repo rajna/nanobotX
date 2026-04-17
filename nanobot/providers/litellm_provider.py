@@ -183,6 +183,11 @@ class LiteLLMProvider(LLMProvider):
         sanitized = LLMProvider._sanitize_request_messages(messages, allowed)
         id_map: dict[str, str] = {}
 
+        # Ensure assistant messages have reasoning_content for Moonshot compatibility
+        # for msg in sanitized:
+        #     if msg.get("role") == "assistant" and "reasoning_content" not in msg:
+        #         msg["reasoning_content"] = ""
+
         def map_id(value: Any) -> Any:
             if not isinstance(value, str):
                 return value
