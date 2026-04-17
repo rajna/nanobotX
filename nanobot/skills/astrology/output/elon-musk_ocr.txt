@@ -1,0 +1,1139 @@
+- banner
+  - generic
+  - generic
+    - link "astro-charts logo" [ref=e1]
+      - image "astro-charts logo"
+- generic
+  - main
+    - generic
+      - heading "Elon Musk" [level=1, ref=e29]
+        - StaticText "Elon Musk"
+          - InlineTextBox "Elon Musk"
+      - paragraph
+        - StaticText "Pretoria, Gauteng, South Africa"
+          - InlineTextBox "Pretoria, Gauteng, South Africa"
+      - paragraph
+        - StaticText "June 28, 1971 at 7:30 AM "
+          - InlineTextBox "June 28, 1971 at 7:30 AM "
+        - StaticText "(Birthtime accuracy: excellent)"
+          - InlineTextBox "(Birthtime accuracy: excellent)"
+      - generic
+        - button " SETTINGS" [ref=e39]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "SETTINGS"
+            - InlineTextBox "SETTINGS"
+        - button "" [disabled, ref=e40]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+        - button "" [disabled, ref=e41]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+        - button "" [ref=e42]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+    - generic
+      - generic
+        - generic
+          - SvgRoot
+            - generic
+              - StaticText "1"
+                - InlineTextBox "1"
+            - generic
+              - StaticText "2"
+                - InlineTextBox "2"
+            - generic
+              - StaticText "3"
+                - InlineTextBox "3"
+            - generic
+              - StaticText "4"
+                - InlineTextBox "4"
+            - generic
+              - StaticText "5"
+                - InlineTextBox "5"
+            - generic
+              - StaticText "6"
+                - InlineTextBox "6"
+            - generic
+              - StaticText "7"
+                - InlineTextBox "7"
+            - generic
+              - StaticText "8"
+                - InlineTextBox "8"
+            - generic
+              - StaticText "9"
+                - InlineTextBox "9"
+            - generic
+              - StaticText "10"
+                - InlineTextBox "10"
+            - generic
+              - StaticText "11"
+                - InlineTextBox "11"
+            - generic
+              - StaticText "12"
+                - InlineTextBox "12"
+  - generic
+    - heading "BIO" [level=2, ref=e2]
+      - StaticText "BIO"
+        - InlineTextBox "BIO"
+    - paragraph
+      - StaticText "Elon R. Musk (/ˈiːlɒn ˈmʌsk/; born June 28, 1971) is a South African-born Canadian-American business magnate, inventor and investor. He is currently the CEO & CTO of SpaceX and CEO & Chief Product Architect of Tesla Motors. He was an early investor in SpaceX, PayPal, Inc. Tesla Motors, and Zip2, and is widely considered a co-founder of each. He invented the Hyperloop, a high-speed transportation system."
+        - InlineTextBox "Elon R. Musk (/ˈiːlɒn ˈmʌsk/; born June 28, "
+        - InlineTextBox "1971) is a South African-born Canadian-"
+        - InlineTextBox "American business magnate, inventor and "
+        - InlineTextBox "investor. He is currently the CEO & CTO of "
+        - InlineTextBox "SpaceX and CEO & Chief Product Architect "
+        - InlineTextBox "of Tesla Motors. He was an early investor in "
+        - InlineTextBox "SpaceX, PayPal, Inc. Tesla Motors, and Zip2, "
+        - InlineTextBox "and is widely considered a co-founder of "
+        - InlineTextBox "each. He invented the Hyperloop, a high-"
+        - InlineTextBox "speed transportation system."
+    - generic
+      - StaticText "BIRTH TIME CREDIT:"
+        - InlineTextBox "BIRTH TIME CREDIT:"
+      - StaticText " "
+        - InlineTextBox " "
+      - link "Quoted in Elon Musk by Walter Isaacson, Simon & Schuster, 2023" [ref=e30]
+        - StaticText "Quoted in Elon Musk by Walter Isaacson, Simon & Schuster, 2023"
+          - InlineTextBox "Quoted in Elon Musk by Walter "
+          - InlineTextBox "Isaacson, Simon & Schuster, 2023"
+      - StaticText " "
+        - InlineTextBox " "
+      - StaticText "/ Accuracy: excellent"
+        - InlineTextBox "/ Accuracy: excellent"
+    - image "Elon Musk"
+    - link "image credit" [ref=e3]
+      - StaticText "image credit"
+        - InlineTextBox "image credit"
+  - generic
+    - heading "PLANETS" [level=2, ref=e4]
+      - StaticText "PLANETS"
+        - InlineTextBox "PLANETS"
+    - paragraph
+      - StaticText "You can think of the planets as symbolizing core parts of the human personality, and the signs as different colors of consciousness through which they filter."
+        - InlineTextBox "You can think of the planets as symbolizing core parts of the "
+        - InlineTextBox "human personality, and the signs as different colors of "
+        - InlineTextBox "consciousness through which they filter."
+    - generic
+      - image
+      - StaticText "Sun"
+        - InlineTextBox "Sun"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "5° 53'"
+        - InlineTextBox "5° 53'"
+      - StaticText "Cancer"
+        - InlineTextBox "Cancer"
+    - generic
+      - image
+      - StaticText "Moon"
+        - InlineTextBox "Moon"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "8° 14'"
+        - InlineTextBox "8° 14'"
+      - StaticText "Virgo"
+        - InlineTextBox "Virgo"
+    - generic
+      - image
+      - StaticText "Mercury"
+        - InlineTextBox "Mercury"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "14° 3'"
+        - InlineTextBox "14° 3'"
+      - StaticText "Cancer"
+        - InlineTextBox "Cancer"
+    - generic
+      - image
+      - StaticText "Venus"
+        - InlineTextBox "Venus"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "19° 23'"
+        - InlineTextBox "19° 23'"
+      - StaticText "Gemini"
+        - InlineTextBox "Gemini"
+    - generic
+      - image
+      - StaticText "Mars"
+        - InlineTextBox "Mars"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "20° 54'"
+        - InlineTextBox "20° 54'"
+      - StaticText "Aquarius"
+        - InlineTextBox "Aquarius"
+    - generic
+      - image
+      - StaticText "Jupiter"
+        - InlineTextBox "Jupiter"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "27° 38'"
+        - InlineTextBox "27° 38'"
+      - StaticText "Scorpio"
+        - InlineTextBox "Scorpio"
+      - StaticText "(r)"
+        - InlineTextBox "(r)"
+    - generic
+      - image
+      - StaticText "Saturn"
+        - InlineTextBox "Saturn"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "1° 7'"
+        - InlineTextBox "1° 7'"
+      - StaticText "Gemini"
+        - InlineTextBox "Gemini"
+    - generic
+      - image
+      - StaticText "Uranus"
+        - InlineTextBox "Uranus"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "9° 28'"
+        - InlineTextBox "9° 28'"
+      - StaticText "Libra"
+        - InlineTextBox "Libra"
+    - generic
+      - image
+      - StaticText "Neptune"
+        - InlineTextBox "Neptune"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "0° 48'"
+        - InlineTextBox "0° 48'"
+      - StaticText "Sagittarius"
+        - InlineTextBox "Sagittarius"
+      - StaticText "(r)"
+        - InlineTextBox "(r)"
+    - generic
+      - image
+      - StaticText "Pluto"
+        - InlineTextBox "Pluto"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "27° 5'"
+        - InlineTextBox "27° 5'"
+      - StaticText "Virgo"
+        - InlineTextBox "Virgo"
+    - generic
+      - image
+      - StaticText "North Node"
+        - InlineTextBox "North Node"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "16° 31'"
+        - InlineTextBox "16° 31'"
+      - StaticText "Aquarius"
+        - InlineTextBox "Aquarius"
+      - StaticText "(r)"
+        - InlineTextBox "(r)"
+    - generic
+      - image
+      - StaticText "Chiron"
+        - InlineTextBox "Chiron"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "13° 41'"
+        - InlineTextBox "13° 41'"
+      - StaticText "Aries"
+        - InlineTextBox "Aries"
+    - generic
+      - image
+      - StaticText "Ascendant"
+        - InlineTextBox "Ascendant"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "13° 30'"
+        - InlineTextBox "13° 30'"
+      - StaticText "Cancer"
+        - InlineTextBox "Cancer"
+    - generic
+      - image
+      - StaticText "MC"
+        - InlineTextBox "MC"
+      - StaticText "in"
+        - InlineTextBox "in"
+      - StaticText "28° 22'"
+        - InlineTextBox "28° 22'"
+      - StaticText "Aries"
+        - InlineTextBox "Aries"
+  - generic
+    - heading "ASPECTS" [level=2, ref=e5]
+      - StaticText "ASPECTS"
+        - InlineTextBox "ASPECTS"
+    - paragraph
+      - StaticText "The aspects describe the geometric angles between the planets. Each shape they produce has a different meaning."
+        - InlineTextBox "The aspects describe the geometric angles between the "
+        - InlineTextBox "planets. Each shape they produce has a different meaning."
+    - image
+    - generic
+      - StaticText "Jupiter Sextile Pluto"
+        - InlineTextBox "Jupiter Sextile Pluto"
+    - generic
+      - StaticText "orb: 0 °"
+        - InlineTextBox "orb: 0 °"
+    - image
+    - generic
+      - StaticText "Chiron Square Ascendant"
+        - InlineTextBox "Chiron Square Ascendant"
+    - generic
+      - StaticText "orb: 0 °"
+        - InlineTextBox "orb: 0 °"
+    - image
+    - generic
+      - StaticText "Mercury Square Chiron"
+        - InlineTextBox "Mercury Square Chiron"
+    - generic
+      - StaticText "orb: 1 °"
+        - InlineTextBox "orb: 1 °"
+    - image
+    - generic
+      - StaticText "Saturn Opposition Neptune"
+        - InlineTextBox "Saturn Opposition Neptune"
+    - generic
+      - StaticText "orb: 1 °"
+        - InlineTextBox "orb: 1 °"
+    - image
+    - generic
+      - StaticText "Mercury Conjunction Ascendant"
+        - InlineTextBox "Mercury Conjunction Ascendant"
+    - generic
+      - StaticText "orb: 1 °"
+        - InlineTextBox "orb: 1 °"
+    - image
+    - generic
+      - StaticText "Venus Trine Mars"
+        - InlineTextBox "Venus Trine Mars"
+    - generic
+      - StaticText "orb: 1 °"
+        - InlineTextBox "orb: 1 °"
+    - image
+    - generic
+      - StaticText "North Node Sextile Chiron"
+        - InlineTextBox "North Node Sextile Chiron"
+    - generic
+      - StaticText "orb: 3 °"
+        - InlineTextBox "orb: 3 °"
+    - image
+    - generic
+      - StaticText "Neptune Sextile Pluto"
+        - InlineTextBox "Neptune Sextile Pluto"
+    - generic
+      - StaticText "orb: 3 °"
+        - InlineTextBox "orb: 3 °"
+    - image
+    - generic
+      - StaticText "Sun Sextile Moon"
+        - InlineTextBox "Sun Sextile Moon"
+    - generic
+      - StaticText "orb: 3 °"
+        - InlineTextBox "orb: 3 °"
+    - image
+    - generic
+      - StaticText "Jupiter Conjunction Neptune"
+        - InlineTextBox "Jupiter Conjunction Neptune"
+    - generic
+      - StaticText "orb: 3 °"
+        - InlineTextBox "orb: 3 °"
+    - image
+    - generic
+      - StaticText "Venus Trine North Node"
+        - InlineTextBox "Venus Trine North Node"
+    - generic
+      - StaticText "orb: 3 °"
+        - InlineTextBox "orb: 3 °"
+    - image
+    - generic
+      - StaticText "Uranus Square Ascendant"
+        - InlineTextBox "Uranus Square Ascendant"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Sun Square Uranus"
+        - InlineTextBox "Sun Square Uranus"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Uranus Opposition Chiron"
+        - InlineTextBox "Uranus Opposition Chiron"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Jupiter Opposition Saturn"
+        - InlineTextBox "Jupiter Opposition Saturn"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Mars Conjunction North Node"
+        - InlineTextBox "Mars Conjunction North Node"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Saturn Trine Pluto"
+        - InlineTextBox "Saturn Trine Pluto"
+    - generic
+      - StaticText "orb: 4 °"
+        - InlineTextBox "orb: 4 °"
+    - image
+    - generic
+      - StaticText "Moon Sextile Ascendant"
+        - InlineTextBox "Moon Sextile Ascendant"
+    - generic
+      - StaticText "orb: 5 °"
+        - InlineTextBox "orb: 5 °"
+    - image
+    - generic
+      - StaticText "Mercury Square Uranus"
+        - InlineTextBox "Mercury Square Uranus"
+    - generic
+      - StaticText "orb: 5 °"
+        - InlineTextBox "orb: 5 °"
+    - image
+    - generic
+      - StaticText "Venus Sextile Chiron"
+        - InlineTextBox "Venus Sextile Chiron"
+    - generic
+      - StaticText "orb: 6 °"
+        - InlineTextBox "orb: 6 °"
+    - image
+    - generic
+      - StaticText "Moon Sextile Mercury"
+        - InlineTextBox "Moon Sextile Mercury"
+    - generic
+      - StaticText "orb: 6 °"
+        - InlineTextBox "orb: 6 °"
+    - image
+    - generic
+      - StaticText "Mars Square Jupiter"
+        - InlineTextBox "Mars Square Jupiter"
+    - generic
+      - StaticText "orb: 7 °"
+        - InlineTextBox "orb: 7 °"
+    - image
+    - generic
+      - StaticText "Moon Square Saturn"
+        - InlineTextBox "Moon Square Saturn"
+    - generic
+      - StaticText "orb: 7 °"
+        - InlineTextBox "orb: 7 °"
+    - image
+    - generic
+      - StaticText "Sun Conjunction Ascendant"
+        - InlineTextBox "Sun Conjunction Ascendant"
+    - generic
+      - StaticText "orb: 8 °"
+        - InlineTextBox "orb: 8 °"
+    - link "Minor Aspects " [ref=e6]
+      - StaticText "Minor Aspects "
+        - InlineTextBox "Minor Aspects "
+      - StaticText ""
+        - InlineTextBox ""
+  - generic
+    - heading "Create Your Astrology Birth Chart" [level=2, ref=e7]
+      - StaticText "Create Your Astrology Birth Chart"
+        - InlineTextBox "Create Your "
+        - InlineTextBox "Astrology Birth "
+        - InlineTextBox "Chart"
+    - paragraph
+      - StaticText "Create your free, personalized, and highly customizable birth chart (natal chart) by filling in the form below. Using our tools you can hide/show planets and asteroids, choose a house system, customize orbs, show declinations, sidereal charts and more..."
+        - InlineTextBox "Create your free, personalized, and highly "
+        - InlineTextBox "customizable birth chart (natal chart) by "
+        - InlineTextBox "filling in the form below. Using our tools "
+        - InlineTextBox "you can hide/show planets and asteroids, "
+        - InlineTextBox "choose a house system, customize orbs, "
+        - InlineTextBox "show declinations, sidereal charts and "
+        - InlineTextBox "more..."
+    - generic
+      - generic
+        - LabelText
+          - StaticText "My name is:"
+            - InlineTextBox "My name is:"
+        - textbox "My name is" [ref=e43]
+          - generic
+      - generic
+        - LabelText
+          - StaticText "I was born in:"
+            - InlineTextBox "I was born in:"
+        - textbox "I was born in" [ref=e44]
+          - generic
+      - generic
+        - generic
+          - StaticText "My date of birth is:"
+            - InlineTextBox "My date of birth is:"
+        - textbox [ref=e45]
+          - generic
+        - StaticText "/"
+          - InlineTextBox "/"
+        - textbox [ref=e46]
+          - generic
+        - StaticText "/"
+          - InlineTextBox "/"
+        - textbox [ref=e47]
+          - generic
+        - textbox [ref=e48]
+          - generic
+        - StaticText ":"
+          - InlineTextBox ":"
+        - textbox [ref=e49]
+          - generic
+        - LabelText
+          - radio "AM" [checked=false, ref=e63]
+          - StaticText "AM"
+            - InlineTextBox "AM"
+        - LabelText
+          - radio "PM" [checked=true, ref=e64]
+          - StaticText "PM"
+            - InlineTextBox "PM"
+      - button "CREATE CHART" [ref=e31]
+        - StaticText "CREATE CHART"
+          - InlineTextBox "CREATE CHART"
+    - generic
+      - image "illustration of two women shoulder-to-shoulder relaxing underneath a warm sun"
+  - generic
+    - heading "PATTERNS" [level=2, ref=e8]
+      - StaticText "PATTERNS"
+        - InlineTextBox "PATTERNS"
+    - paragraph
+      - StaticText "Chart patterns are a collection of aspects that are grouped together to reveal a larger geometric pattern within the chart."
+        - InlineTextBox "Chart patterns are a collection of aspects that are grouped "
+        - InlineTextBox "together to reveal a larger geometric pattern within the chart."
+    - generic
+      - generic
+        - image
+      - paragraph
+        - StaticText "T-Square"
+          - InlineTextBox "T-Square"
+      - paragraph
+        - StaticText "Uranus in 9° Libra"
+          - InlineTextBox "Uranus in 9° Libra"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Ascendant in 13° Cancer"
+          - InlineTextBox "Ascendant in 13° Cancer"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Chiron in 13° Aries"
+          - InlineTextBox "Chiron in 13° Aries"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Mercury in 14° Cancer"
+          - InlineTextBox "Mercury in 14° Cancer"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+      - generic
+        - image
+      - paragraph
+        - StaticText "Yod"
+          - InlineTextBox "Yod"
+      - paragraph
+        - StaticText "MC in 28° Aries"
+          - InlineTextBox "MC in 28° Aries"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Pluto in 27° Virgo"
+          - InlineTextBox "Pluto in 27° Virgo"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Neptune in 0° Sagittarius"
+          - InlineTextBox "Neptune in 0° Sagittarius"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+        - StaticText "Jupiter in 27° Scorpio"
+          - InlineTextBox "Jupiter in 27° Scorpio"
+        - LineBreak "
+"
+          - InlineTextBox "
+"
+  - generic
+    - heading "SPECIAL FEATURES" [level=2, ref=e9]
+      - StaticText "SPECIAL FEATURES"
+        - InlineTextBox "SPECIAL FEATURES"
+    - paragraph
+      - StaticText "The section describes some additional features of this chart. Note the inner planets refer to Sun to Jupiter, as well as the Ascendant and MC, and represent the core parts of the personality."
+        - InlineTextBox "The section describes some additional features of this chart. "
+        - InlineTextBox "Note the inner planets refer to Sun to Jupiter, as well as the "
+        - InlineTextBox "Ascendant and MC, and represent the core parts of the "
+        - InlineTextBox "personality."
+    - generic
+      - generic
+        - generic
+          - image
+        - paragraph
+          - StaticText "The moon was a waxing crescent moon"
+            - InlineTextBox "The moon was a "
+            - InlineTextBox "waxing crescent "
+            - InlineTextBox "moon"
+        - generic
+          - image
+        - paragraph
+          - StaticText "The chart is a Bucket shape"
+            - InlineTextBox "The chart is a Bucket "
+            - InlineTextBox "shape"
+        - generic
+          - image
+        - paragraph
+          - StaticText "The Water element is dominant among the inner planets"
+            - InlineTextBox "The Water element is "
+            - InlineTextBox "dominant among the "
+            - InlineTextBox "inner planets"
+        - generic
+          - image
+        - paragraph
+          - StaticText "The Cardinal mode is dominant among the inner planets"
+            - InlineTextBox "The Cardinal mode is "
+            - InlineTextBox "dominant among the "
+            - InlineTextBox "inner planets"
+        - generic
+          - image
+        - paragraph
+          - StaticText "Sun and Mercury are rising"
+            - InlineTextBox "Sun and Mercury are "
+            - InlineTextBox "rising"
+        - generic
+          - image
+        - paragraph
+          - StaticText "Ascendant is in 11 aspects"
+            - InlineTextBox "Ascendant is in 11 "
+            - InlineTextBox "aspects"
+        - generic
+          - image
+        - paragraph
+          - StaticText "Moon in Virgo and Mercury in Cancer are in mutual reception"
+            - InlineTextBox "Moon in Virgo and "
+            - InlineTextBox "Mercury in Cancer "
+            - InlineTextBox "are in mutual "
+            - InlineTextBox "reception"
+  - generic
+    - heading "HOUSES" [level=2, ref=e10]
+      - StaticText "HOUSES"
+        - InlineTextBox "HOUSES"
+    - paragraph
+      - StaticText "Chart houses split the chart into twelve realms, beginning from the Ascendant, which add another dimension of themes corresponding to the signs starting from Aries."
+        - InlineTextBox "Chart houses split the chart into twelve realms, beginning "
+        - InlineTextBox "from the Ascendant, which add another dimension of "
+        - InlineTextBox "themes corresponding to the signs starting from Aries."
+    - generic
+      - generic
+        - StaticText "1"
+          - InlineTextBox "1"
+        - superscript
+          - StaticText "st"
+            - InlineTextBox "st"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "13°"
+          - InlineTextBox "13°"
+      - generic
+        - StaticText "Cancer"
+          - InlineTextBox "Cancer"
+      - generic
+        - StaticText "(Containing Mercury)"
+          - InlineTextBox "(Containing Mercury)"
+      - generic
+        - StaticText "2"
+          - InlineTextBox "2"
+        - superscript
+          - StaticText "nd"
+            - InlineTextBox "nd"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "18°"
+          - InlineTextBox "18°"
+      - generic
+        - StaticText "Leo"
+          - InlineTextBox "Leo"
+      - generic
+        - StaticText "(Containing Moon)"
+          - InlineTextBox "(Containing Moon)"
+      - generic
+        - StaticText "3"
+          - InlineTextBox "3"
+        - superscript
+          - StaticText "rd"
+            - InlineTextBox "rd"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "25°"
+          - InlineTextBox "25°"
+      - generic
+        - StaticText "Virgo"
+          - InlineTextBox "Virgo"
+      - generic
+        - StaticText "(Containing Uranus and Pluto)"
+          - InlineTextBox "(Containing Uranus and Pluto)"
+      - generic
+        - StaticText "4"
+          - InlineTextBox "4"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "28°"
+          - InlineTextBox "28°"
+      - generic
+        - StaticText "Libra"
+          - InlineTextBox "Libra"
+      - generic
+        - StaticText "5"
+          - InlineTextBox "5"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "25°"
+          - InlineTextBox "25°"
+      - generic
+        - StaticText "Scorpio"
+          - InlineTextBox "Scorpio"
+      - generic
+        - StaticText "(Containing Jupiter and Neptune)"
+          - InlineTextBox "(Containing Jupiter and Neptune)"
+      - generic
+        - StaticText "6"
+          - InlineTextBox "6"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "19°"
+          - InlineTextBox "19°"
+      - generic
+        - StaticText "Sagittarius"
+          - InlineTextBox "Sagittarius"
+      - generic
+        - StaticText "7"
+          - InlineTextBox "7"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "13°"
+          - InlineTextBox "13°"
+      - generic
+        - StaticText "Capricorn"
+          - InlineTextBox "Capricorn"
+      - generic
+        - StaticText "(Containing North Node)"
+          - InlineTextBox "(Containing North Node)"
+      - generic
+        - StaticText "8"
+          - InlineTextBox "8"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "18°"
+          - InlineTextBox "18°"
+      - generic
+        - StaticText "Aquarius"
+          - InlineTextBox "Aquarius"
+      - generic
+        - StaticText "(Containing Mars)"
+          - InlineTextBox "(Containing Mars)"
+      - generic
+        - StaticText "9"
+          - InlineTextBox "9"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "25°"
+          - InlineTextBox "25°"
+      - generic
+        - StaticText "Pisces"
+          - InlineTextBox "Pisces"
+      - generic
+        - StaticText "(Containing Chiron)"
+          - InlineTextBox "(Containing Chiron)"
+      - generic
+        - StaticText "10"
+          - InlineTextBox "10"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "28°"
+          - InlineTextBox "28°"
+      - generic
+        - StaticText "Aries"
+          - InlineTextBox "Aries"
+      - generic
+        - StaticText "11"
+          - InlineTextBox "11"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "25°"
+          - InlineTextBox "25°"
+      - generic
+        - StaticText "Taurus"
+          - InlineTextBox "Taurus"
+      - generic
+        - StaticText "(Containing Saturn)"
+          - InlineTextBox "(Containing Saturn)"
+      - generic
+        - StaticText "12"
+          - InlineTextBox "12"
+        - superscript
+          - StaticText "th"
+            - InlineTextBox "th"
+        - StaticText " House"
+          - InlineTextBox " House"
+      - StaticText "starts at"
+        - InlineTextBox "starts at"
+      - generic
+        - StaticText "19°"
+          - InlineTextBox "19°"
+      - generic
+        - StaticText "Gemini"
+          - InlineTextBox "Gemini"
+      - generic
+        - StaticText "(Containing Sun and Venus)"
+          - InlineTextBox "(Containing Sun and Venus)"
+  - generic
+    - generic
+      - link "A birth chart print on a white background" [ref=e32]
+        - image "A birth chart print on a white background"
+    - heading "The Birth Chart Print" [level=2, ref=e11]
+      - StaticText "The Birth Chart Print"
+        - InlineTextBox "The Birth Chart Print"
+    - paragraph
+      - StaticText "Display the unique planetary positions of a birth chart with this custom wall print."
+        - InlineTextBox "Display the unique planetary positions of a "
+        - InlineTextBox "birth chart with this custom wall print."
+    - generic
+      - link "LEARN MORE" [ref=e33]
+        - button "LEARN MORE" [ref=e50]
+          - StaticText "LEARN MORE"
+            - InlineTextBox "LEARN MORE"
+  - generic
+    - heading "TRENDING CELEBRITY CHARTS" [level=2, ref=e12]
+      - StaticText "TRENDING CELEBRITY CHARTS"
+        - InlineTextBox "TRENDING CELEBRITY CHARTS"
+    - link "Donald Trump Donald Trump Jun 14, 1946" [ref=e13]
+      - generic
+        - image "Donald Trump"
+      - paragraph
+        - StaticText "Donald Trump"
+          - InlineTextBox "Donald Trump"
+      - paragraph
+        - StaticText "Jun 14, 1946"
+          - InlineTextBox "Jun 14, 1946"
+    - link "Dakota Johnson Dakota Johnson Oct 04, 1989" [ref=e14]
+      - generic
+        - image "Dakota Johnson"
+      - paragraph
+        - StaticText "Dakota Johnson"
+          - InlineTextBox "Dakota Johnson"
+      - paragraph
+        - StaticText "Oct 04, 1989"
+          - InlineTextBox "Oct 04, 1989"
+    - link "John F. Kennedy Jr. John F. Kennedy Jr. Nov 25, 1960" [ref=e15]
+      - generic
+        - image "John F. Kennedy Jr."
+      - paragraph
+        - StaticText "John F. Kennedy Jr."
+          - InlineTextBox "John F. Kennedy Jr."
+      - paragraph
+        - StaticText "Nov 25, 1960"
+          - InlineTextBox "Nov 25, 1960"
+    - link "Doja Cat Doja Cat Oct 21, 1995" [ref=e16]
+      - generic
+        - image "Doja Cat"
+      - paragraph
+        - StaticText "Doja Cat"
+          - InlineTextBox "Doja Cat"
+      - paragraph
+        - StaticText "Oct 21, 1995"
+          - InlineTextBox "Oct 21, 1995"
+    - link "Elon Musk Elon Musk Jun 28, 1971" [ref=e17]
+      - generic
+        - image "Elon Musk"
+      - paragraph
+        - StaticText "Elon Musk"
+          - InlineTextBox "Elon Musk"
+      - paragraph
+        - StaticText "Jun 28, 1971"
+          - InlineTextBox "Jun 28, 1971"
+    - link "Zendaya Zendaya Sep 01, 1996" [ref=e18]
+      - generic
+        - image "Zendaya"
+      - paragraph
+        - StaticText "Zendaya"
+          - InlineTextBox "Zendaya"
+      - paragraph
+        - StaticText "Sep 01, 1996"
+          - InlineTextBox "Sep 01, 1996"
+    - link "Nicole Kidman Nicole Kidman Jun 20, 1967" [ref=e19]
+      - generic
+        - image "Nicole Kidman"
+      - paragraph
+        - StaticText "Nicole Kidman"
+          - InlineTextBox "Nicole Kidman"
+      - paragraph
+        - StaticText "Jun 20, 1967"
+          - InlineTextBox "Jun 20, 1967"
+    - link "Marilyn Monroe Marilyn Monroe Jun 01, 1926" [ref=e20]
+      - generic
+        - image "Marilyn Monroe"
+      - paragraph
+        - StaticText "Marilyn Monroe"
+          - InlineTextBox "Marilyn Monroe"
+      - paragraph
+        - StaticText "Jun 01, 1926"
+          - InlineTextBox "Jun 01, 1926"
+    - link "Tyler, the Creator Tyler, the Creator Mar 06, 1991" [ref=e21]
+      - generic
+        - image "Tyler, the Creator"
+      - paragraph
+        - StaticText "Tyler, the Creator"
+          - InlineTextBox "Tyler, the Creator"
+      - paragraph
+        - StaticText "Mar 06, 1991"
+          - InlineTextBox "Mar 06, 1991"
+    - link "Rihanna Rihanna Feb 20, 1988" [ref=e22]
+      - generic
+        - image "Rihanna"
+      - paragraph
+        - StaticText "Rihanna"
+          - InlineTextBox "Rihanna"
+      - paragraph
+        - StaticText "Feb 20, 1988"
+          - InlineTextBox "Feb 20, 1988"
+    - link "Tom Holland Jun 01, 1996" [ref=e23]
+      - generic
+        - image
+      - paragraph
+        - StaticText "Tom Holland"
+          - InlineTextBox "Tom Holland"
+      - paragraph
+        - StaticText "Jun 01, 1996"
+          - InlineTextBox "Jun 01, 1996"
+    - link "Lana Del Rey Lana Del Rey Jun 21, 1985" [ref=e24]
+      - generic
+        - image "Lana Del Rey"
+      - paragraph
+        - StaticText "Lana Del Rey"
+          - InlineTextBox "Lana Del Rey"
+      - paragraph
+        - StaticText "Jun 21, 1985"
+          - InlineTextBox "Jun 21, 1985"
+  - generic
+    - heading "CELEBRITY CHARTS BY SUN SIGN" [level=2, ref=e25]
+      - StaticText "CELEBRITY CHARTS BY SUN SIGN"
+        - InlineTextBox "CELEBRITY CHARTS BY SUN SIGN"
+    - list
+      - listitem [level=1]
+        - link " Aries" [ref=e51]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Aries"
+            - InlineTextBox "Aries"
+      - listitem [level=1]
+        - link " Taurus" [ref=e52]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Taurus"
+            - InlineTextBox "Taurus"
+      - listitem [level=1]
+        - link " Gemini" [ref=e53]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Gemini"
+            - InlineTextBox "Gemini"
+      - listitem [level=1]
+        - link " Cancer" [ref=e54]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Cancer"
+            - InlineTextBox "Cancer"
+      - listitem [level=1]
+        - link " Leo" [ref=e55]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Leo"
+            - InlineTextBox "Leo"
+      - listitem [level=1]
+        - link " Virgo" [ref=e56]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Virgo"
+            - InlineTextBox "Virgo"
+      - listitem [level=1]
+        - link " Libra" [ref=e57]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Libra"
+            - InlineTextBox "Libra"
+      - listitem [level=1]
+        - link " Scorpio" [ref=e58]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Scorpio"
+            - InlineTextBox "Scorpio"
+      - listitem [level=1]
+        - link " Sagittarius" [ref=e59]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Sagittarius"
+            - InlineTextBox "Sagittarius"
+      - listitem [level=1]
+        - link " Capricorn" [ref=e60]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Capricorn"
+            - InlineTextBox "Capricorn"
+      - listitem [level=1]
+        - link " Aquarius" [ref=e61]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Aquarius"
+            - InlineTextBox "Aquarius"
+      - listitem [level=1]
+        - link " Pisces" [ref=e62]
+          - generic
+            - StaticText ""
+              - InlineTextBox ""
+          - StaticText "Pisces"
+            - InlineTextBox "Pisces"
+  - generic
+    - heading "ADVANCED SEARCH" [level=2, ref=e26]
+      - StaticText "ADVANCED SEARCH"
+        - InlineTextBox "ADVANCED SEARCH"
+    - paragraph
+      - StaticText "The advanced seach feature allows you to filter famous people by any planet, aspect, etc."
+        - InlineTextBox "The advanced seach feature allows you to filter famous people "
+        - InlineTextBox "by any planet, aspect, etc."
+    - link " SEARCH" [ref=e27]
+      - button " SEARCH" [ref=e34]
+        - generic
+          - StaticText ""
+            - InlineTextBox ""
+        - StaticText "SEARCH"
+          - InlineTextBox "SEARCH"
+- contentinfo
+  - generic
+    - link "Astro-Chart's Logo" [ref=e28]
+      - image "Astro-Chart's Logo"
+  - list
+    - listitem [level=1]
+      - link "ABOUT" [ref=e35]
+        - StaticText "ABOUT"
+          - InlineTextBox "ABOUT"
+    - listitem [level=1]
+      - link "TERMS OF USE" [ref=e36]
+        - StaticText "TERMS OF USE"
+          - InlineTextBox "TERMS OF USE"
+    - listitem [level=1]
+      - link "PRIVACY POLICY" [ref=e37]
+        - StaticText "PRIVACY POLICY"
+          - InlineTextBox "PRIVACY POLICY"
+    - listitem [level=1]
+      - link "CONTACT" [ref=e38]
+        - StaticText "CONTACT"
+          - InlineTextBox "CONTACT"
+    - listitem [level=1]
+      - StaticText "ASTRO CHARTS © 2026"
+        - InlineTextBox "ASTRO CHARTS © 2026"
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
+- InlineTextBox ""
